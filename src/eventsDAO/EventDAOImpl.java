@@ -86,4 +86,5 @@ public class EventDAOImpl implements EventDAO{
 	}
 	return d <= maxD;
     }
+    
 }

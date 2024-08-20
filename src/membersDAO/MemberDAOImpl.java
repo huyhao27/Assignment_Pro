@@ -2,6 +2,7 @@ package membersDAO;
 
 import models.Member;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class MemberDAOImpl implements MemberDAO {
@@ -12,6 +13,23 @@ public class MemberDAOImpl implements MemberDAO {
     public void addMember(Member member) {
         members.add(member);
         System.out.println("Thành viên đã được thêm thành công.");
+    }
+    public static String formatName(String name) {
+
+        name = name.trim().toLowerCase();
+
+        String[] words = name.split("\\s+");
+        StringBuilder formattedName = new StringBuilder();
+
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                formattedName.append(Character.toUpperCase(word.charAt(0)))
+                        .append(word.substring(1))
+                        .append(" ");
+            }
+        }
+
+        return formattedName.toString().trim();
     }
 
     @Override
@@ -52,10 +70,19 @@ public class MemberDAOImpl implements MemberDAO {
         return members;
     }
 
-    @Override
-    public boolean isExist(String checkID, String checkPhone) {
+    /*public boolean isExist(String checkID, String checkPhone) {
         for (Member member : members) {
-            if (member.getID().equalsIgnoreCase(checkID) || member.getPhoneNumber().equals(checkPhone)) {
+            if (member.getID().equalsIgnoreCase(checkID) 
+                || member.getPhoneNumber().equals(checkPhone)) {
+                return true;
+            }
+        }
+        return false;
+    }*/
+    public static boolean isExist(String checkID, String checkPhone) {
+        for (Member member : members) {
+            if (member.getID().equalsIgnoreCase(checkID)
+                    || member.getPhoneNumber().equals(checkPhone)) {
                 return true;
             }
         }
