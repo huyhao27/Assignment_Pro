@@ -9,9 +9,35 @@ public class MemberDAOImpl implements MemberDAO {
     private List<Member> members = new ArrayList<>();
 
     @Override
-    public void addMember(Member member) {
-        members.add(member);
-        System.out.println("Thành viên đã được thêm thành công.");
+    public boolean addMember(Member member) {
+       if( !isExist(member.getID(),member.getPhoneNumber()))
+        { 
+            members.add(member);
+            System.out.println("Thành viên đã được thêm thành công.");
+            return true;
+        }
+       else {
+           System.out.println("SDT or rollnum da ton tai, nhap lai");
+           return false;
+       }
+    }
+    
+    public static String formatName(String name) {
+
+        name = name.trim().toLowerCase();
+
+        String[] words = name.split("\\s+");
+        StringBuilder formattedName = new StringBuilder();
+
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                formattedName.append(Character.toUpperCase(word.charAt(0)))
+                        .append(word.substring(1))
+                        .append(" ");
+            }
+        }
+
+        return formattedName.toString().trim();
     }
 
     @Override

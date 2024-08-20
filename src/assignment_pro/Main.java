@@ -1,3 +1,7 @@
+
+
+import managers.MemberManager;
+import assignment_pro.Menu;
 import models.Event;
 import eventsDAO.EventDAOImpl;
 import models.Member;
@@ -14,19 +18,46 @@ public class Main {
         Event event = new Event();
         EventDAOImpl eventDAO = new EventDAOImpl();
         MemberDAOImpl memberDAO = new MemberDAOImpl();
+        
+        Menu menu = new Menu(11);
+        menu.addMenuItem("===== MENU QUẢN LÝ C U LẠC BỘ =====");
+        menu.addMenuItem("1. Thêm thành viên mới");
+        menu.addMenuItem("2. Xóa thành viên theo mssv");
+        menu.addMenuItem("3. Cập nhật thông tin thành viên");
+        menu.addMenuItem("4. Tìm kiếm sinh viên theo mã sinh viên");
+        menu.addMenuItem("5. Hiển thị danh sách thành viên");
+        menu.addMenuItem("6. Thêm sự kiện");
+        menu.addMenuItem("7. Hiển thị danh sách sự kiện");
+        menu.addMenuItem("8. Sua");
+        menu.addMenuItem("9. xoa sk");
+        menu.addMenuItem("10. Thoat");
+        
+        
+      
+        
+        MemberManager memberManager = new MemberManager();
+
         while (true) {
-            showMenu();
+    //      showMenu();
+            menu.showMenu();
+            System.out.print("Chọn một tùy chọn: ");
             String choice = scanner.nextLine();
             
             switch (choice) {
                 case "1":
+                    boolean addFinish= false;
+                    do{
                     Member newMember = createMember();
-                    memberDAO.addMember(newMember);
+                    addFinish = memberDAO.addMember(newMember);
+                     
+                    }
+                    while(!addFinish);
                     break;
                 case "2":
                     System.out.print("Nhập mã số sinh viên cần xóa: ");
                     String ID = scanner.nextLine();
                     memberDAO.removeMemberByID(ID);
+
                     break;
                 case "3":
                     System.out.print("Nhập mã số sinh viên cần cập nhật: ");
@@ -41,6 +72,7 @@ public class Main {
                     } else {
                         System.out.println("Không tìm thấy thành viên.");
                     }
+                    
                     break;
                 case "4":
                     System.out.print("Nhập mã số sinh viên cần tìm: ");
@@ -150,8 +182,17 @@ public class Main {
         String ID = scanner.nextLine();
         System.out.print("Nhập vị trí: ");
         String position = scanner.nextLine();
-        System.out.print("Nhập số điện thoại: ");
-        String phoneNumber = scanner.nextLine();
-        return new Member(name, ID, position, phoneNumber);
+        String phoneNumber;
+        do{
+            System.out.print("Nhập số điện thoại: ");
+            phoneNumber = scanner.nextLine();
+                if (!checkPhoneNumber(phoneNumber)){
+                System.out.println("-----SDT chỉ bao gồm chữ số.Vui lòng nhập lại-----");
+                }
+        }while(!checkPhoneNumber(phoneNumber));
+        return new Member( name, ID, position, phoneNumber);
     }
+    public static boolean checkPhoneNumber(String phone_Num) {
+        return phone_Num.matches("\\d+");
+        }
 }

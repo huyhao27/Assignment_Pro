@@ -36,4 +36,9 @@ public class Menu {
         }
         return choice;
     }
+    public void showMenu(){
+        for(int i=0;i<size; i++){
+            System.out.println(this.menuItems[i]);
+        }
+    }
 }
