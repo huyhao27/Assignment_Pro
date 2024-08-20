@@ -1,27 +1,44 @@
 import models.Event;
+<<<<<<< Updated upstream
 import eventsDAO.EventDAO;
 import eventsDAO.EventDAOImpl;
 import assignment_pro.Member;
 import java.util.ArrayList;
+=======
+import eventsDAO.EventDAOImpl;
+import models.Member;
+//import membersDAO.MemberDAO;
+import membersDAO.MemberDAOImpl;
+>>>>>>> Stashed changes
 import java.util.Scanner;
 
 
 
 public class Main {
 
+<<<<<<< Updated upstream
     static ArrayList<Event> events = new ArrayList<>();
+=======
+>>>>>>> Stashed changes
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         EventDAOImpl eventDAO = new EventDAOImpl();
+<<<<<<< Updated upstream
         Event event = new Event();
         Member member = new Member();
+=======
+        MemberDAOImpl memberDAO = new MemberDAOImpl();
+        Event event = new Event();
+     //   Member member = new Member();
+>>>>>>> Stashed changes
         while (true) {
             showMenu();
             String choice = scanner.nextLine();
             
             switch (choice) {
                 case "1":
+<<<<<<< Updated upstream
                     member.addMember();
                     break;
                 case "2":
@@ -38,6 +55,42 @@ public class Main {
                     
                 case "5":
                     member.listMembers();
+=======
+                    Member newMember = createMember();
+                    memberDAO.addMember(newMember);
+                    break;
+                case "2":
+                    System.out.print("Nhập mã số sinh viên cần xóa: ");
+                    String ID = scanner.nextLine();
+                    memberDAO.removeMemberByID(ID);
+                    break;
+                case "3":
+                    System.out.print("Nhập mã số sinh viên cần cập nhật: ");
+                    String updateID = scanner.nextLine();
+                    Member updatedMember = memberDAO.findByID(updateID);
+                    if (updatedMember != null) {
+                        System.out.print("Nhập vị trí mới: ");
+                        updatedMember.setPosition(scanner.nextLine());
+                        System.out.print("Nhập số điện thoại mới: ");
+                        updatedMember.setPhoneNumber(scanner.nextLine());
+                        memberDAO.updateMember(updatedMember);
+                    } else {
+                        System.out.println("Không tìm thấy thành viên.");
+                    }
+                    break;
+                case "4":
+                    System.out.print("Nhập mã số sinh viên cần tìm: ");
+                    String findID = scanner.nextLine();
+                    Member member = memberDAO.findByID(findID);
+                    if (member != null) {
+                        System.out.println(member);
+                    } else {
+                        System.out.println("Không tìm thấy thành viên.");
+                    }
+                    break;
+                case "5":
+                    memberDAO.getAllMembers().forEach(System.out::println);
+>>>>>>> Stashed changes
                     break;
                 case "6":
                     int day=32 , month=0, year=0;
@@ -127,5 +180,19 @@ public class Main {
         System.out.println("10. Thoat");
         System.out.print("Chọn một tùy chọn: ");
     }  
+<<<<<<< Updated upstream
+=======
+    public static Member createMember() {
+        System.out.print("Nhập tên thành viên: ");
+        String name = scanner.nextLine();
+        System.out.print("Nhập mã số sinh viên: ");
+        String ID = scanner.nextLine();
+        System.out.print("Nhập vị trí: ");
+        String position = scanner.nextLine();
+        System.out.print("Nhập số điện thoại: ");
+        String phoneNumber = scanner.nextLine();
+        return new Member(name, ID, position, phoneNumber);
+    }
+>>>>>>> Stashed changes
 }
 
