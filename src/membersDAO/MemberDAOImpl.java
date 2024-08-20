@@ -10,10 +10,19 @@ public class MemberDAOImpl implements MemberDAO {
     private List<Member> members = new ArrayList<>();
 
     @Override
-    public void addMember(Member member) {
-        members.add(member);
-        System.out.println("Thành viên đã được thêm thành công.");
+    public boolean addMember(Member member) {
+       if( !isExist(member.getID(),member.getPhoneNumber()))
+        { 
+            members.add(member);
+            System.out.println("Thành viên đã được thêm thành công.");
+            return true;
+        }
+       else {
+           System.out.println("SDT or rollnum da ton tai, nhap lai");
+           return false;
+       }
     }
+    
     public static String formatName(String name) {
 
         name = name.trim().toLowerCase();
@@ -31,6 +40,7 @@ public class MemberDAOImpl implements MemberDAO {
 
         return formattedName.toString().trim();
     }
+   
 
     @Override
     public void removeMemberByID(String ID) {
@@ -79,7 +89,8 @@ public class MemberDAOImpl implements MemberDAO {
         }
         return false;
     }*/
-    public static boolean isExist(String checkID, String checkPhone) {
+    @Override
+    public boolean isExist(String checkID, String checkPhone) {
         for (Member member : members) {
             if (member.getID().equalsIgnoreCase(checkID)
                     || member.getPhoneNumber().equals(checkPhone)) {

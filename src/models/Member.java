@@ -1,5 +1,6 @@
 package models;
 
+
 import static membersDAO.MemberDAOImpl.formatName;
 
 public class Member {
@@ -11,20 +12,22 @@ public class Member {
     public Member() {
     }
 
-    public Member(String name,String ID, String position, String phoneNumber) {
+
+    public Member(String name, String ID, String position, String phoneNumber) {
+
         this.name = formatName(name);
         this.ID = ID;
         this.position = position;
         this.phoneNumber = phoneNumber;
     }
 
-    // Getter và Setter
+    // Getter vÃ  Setter
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = formatName(name);
     }
 
     public String getPosition() {
@@ -53,6 +56,6 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Rollnumber: " + ID + ", Tên: " + name + ", Vị trí: " + position + ", Số điện thoại: " + phoneNumber;
+        return "Rollnumber: " + ID + ", Ten: " + name + ", Vi tri: " + position + ", SSDT: " + phoneNumber;
     }
 }
