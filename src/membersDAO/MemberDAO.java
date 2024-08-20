@@ -9,5 +9,5 @@ public interface MemberDAO {
     void updateMember(Member member);
     Member findByID(String ID);
     List<Member> getAllMembers();
-    //boolean isExist(String checkID, String checkPhone);
+    boolean isExist(String checkID, String checkPhone);
 }

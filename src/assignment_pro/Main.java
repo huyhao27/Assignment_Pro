@@ -1,11 +1,12 @@
-
 import models.Event;
 import eventsDAO.EventDAOImpl;
 import models.Member;
 import membersDAO.MemberDAOImpl;
 import java.util.Scanner;
 
+
 public class Main {
+
 
     static Scanner scanner = new Scanner(System.in);
 
@@ -16,66 +17,66 @@ public class Main {
         while (true) {
             showMenu();
             String choice = scanner.nextLine();
-
+            
             switch (choice) {
                 case "1":
                     Member newMember = createMember();
                     memberDAO.addMember(newMember);
                     break;
                 case "2":
-                    System.out.print("Enter the student ID want to remove: ");
+                    System.out.print("Nhập mã số sinh viên cần xóa: ");
                     String ID = scanner.nextLine();
                     memberDAO.removeMemberByID(ID);
                     break;
                 case "3":
-                    System.out.print("Enter student ID to update: ");
+                    System.out.print("Nhập mã số sinh viên cần cập nhật: ");
                     String updateID = scanner.nextLine();
                     Member updatedMember = memberDAO.findByID(updateID);
                     if (updatedMember != null) {
-                        System.out.print("Enter NEW Position: ");
+                        System.out.print("Nhập vị trí mới: ");
                         updatedMember.setPosition(scanner.nextLine());
-                        System.out.print("Enter NEW PhoneNumber: ");
+                        System.out.print("Nhập số điện thoại mới: ");
                         updatedMember.setPhoneNumber(scanner.nextLine());
                         memberDAO.updateMember(updatedMember);
                     } else {
-                        System.out.println("No members found.");
+                        System.out.println("Không tìm thấy thành viên.");
                     }
                     break;
                 case "4":
-                    System.out.print("Enter the rollnumber are looking for: ");
+                    System.out.print("Nhập mã số sinh viên cần tìm: ");
                     String findID = scanner.nextLine();
                     Member member = memberDAO.findByID(findID);
                     if (member != null) {
                         System.out.println(member);
                     } else {
-                        System.out.println("No members found.");
+                        System.out.println("Không tìm thấy thành viên.");
                     }
                     break;
                 case "5":
                     memberDAO.getAllMembers().forEach(System.out::println);
                     break;
                 case "6":
-                    int day = 32,
-                     month = 0,
-                     year = 0;
-                    System.out.print("Enter Event Name: ");
+                    int day=32 , month=0, year=0;
+                    System.out.print("Nhập tên sự kiện: ");
                     String eventName = scanner.nextLine();
-                    while (!eventDAO.checkDate(day, month, year)) {
-                        System.out.print("Nhập ngày: ");
-                        day = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Enter month: ");
-                        month = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Enter Year: ");
-                        year = Integer.parseInt(scanner.nextLine());
-                        if (!eventDAO.checkDate(day, month, year)) {
-                            System.out.println("NOT VALID! Please try again...");
-                        }
+                    while (!eventDAO.checkDate(day, month,year))
+                    {
+                    System.out.print("Nhập ngày: ");
+                    day = Integer.parseInt(scanner.nextLine());
+                    System.out.print("Enter month: ");
+                    month = Integer.parseInt(scanner.nextLine());
+                    System.out.print("Enter Year: ");
+                    year = Integer.parseInt(scanner.nextLine());
+                    if(!eventDAO.checkDate(day, month,year)){
+                        System.out.println("NOT VALID! Please try again...");
+                    }
                     }
                     event.setDate(String.format("%d/%d/%d", day, month, year));
-
+                
                     System.out.print("Nhập địa điểm: ");
                     String location = scanner.nextLine();
-
+        
+                    
                     eventDAO.addEvent(new Event(eventName, event.getDate(), location));
                     break;
                 case "7":
@@ -89,17 +90,18 @@ public class Main {
                     String updateName = scanner.nextLine();
                     Event eventToUpdate = eventDAO.getEventByName(updateName);
                     if (eventToUpdate != null) {
-                        int newDay = 32, newMonth = 0, newYear = 0;
-                        while (!eventDAO.checkDate(newDay, newMonth, newYear)) {
-                            System.out.print("Nhập ngày: ");
-                            newDay = Integer.parseInt(scanner.nextLine());
-                            System.out.print("Enter month: ");
-                            newMonth = Integer.parseInt(scanner.nextLine());
-                            System.out.print("Enter Year: ");
-                            newYear = Integer.parseInt(scanner.nextLine());
-                            if (!eventDAO.checkDate(newDay, newMonth, newYear)) {
+                        int newDay =32, newMonth=0, newYear=0;
+                        while (!eventDAO.checkDate(newDay, newMonth,newYear))
+                        {
+                        System.out.print("Nhập ngày: ");
+                        newDay = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Enter month: ");
+                        newMonth = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Enter Year: ");
+                        newYear = Integer.parseInt(scanner.nextLine());
+                            if(!eventDAO.checkDate(newDay, newMonth,newYear)){
                                 System.out.println("NOT VALID! Please try again...");
-                            }
+                        }
                         }
                         event.setDate(String.format("%d/%d/%d", newDay, newMonth, newYear));
                         System.out.print("Nhập địa điểm mới: ");
@@ -140,27 +142,16 @@ public class Main {
         System.out.println("9. xoa sk");
         System.out.println("10. Thoat");
         System.out.print("Chọn một tùy chọn: ");
-    }
-
+    }  
     public static Member createMember() {
-
         System.out.print("Nhập tên thành viên: ");
         String name = scanner.nextLine();
         System.out.print("Nhập mã số sinh viên: ");
         String ID = scanner.nextLine();
         System.out.print("Nhập vị trí: ");
         String position = scanner.nextLine();
-        String phoneNumber;
-        do{
-            System.out.print("Nhập số điện thoại: ");
-            phoneNumber = scanner.nextLine();
-                if (!checkPhoneNumber(phoneNumber)){
-                System.out.println("-----SDT chỉ bao gồm chữ số.Vui lòng nhập lại-----");
-                }
-        }while(!checkPhoneNumber(phoneNumber));
-        return new Member( name, ID, position, phoneNumber);
+        System.out.print("Nhập số điện thoại: ");
+        String phoneNumber = scanner.nextLine();
+        return new Member(name, ID, position, phoneNumber);
     }
-    public static boolean checkPhoneNumber(String phone_Num) {
-        return phone_Num.matches("\\d+");
-        } 
 }
