@@ -10,4 +10,8 @@ public interface MemberDAO {
     Member findByID(String ID);
     List<Member> getAllMembers();
     boolean isExist(String checkID, String checkPhone);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> quynh
