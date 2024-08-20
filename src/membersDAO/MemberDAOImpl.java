@@ -61,8 +61,4 @@ public class MemberDAOImpl implements MemberDAO {
         }
         return false;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> quynh

@@ -1,10 +1,6 @@
 import models.Event;
 import eventsDAO.EventDAOImpl;
 import models.Member;
-<<<<<<< HEAD
-import membersDAO.MemberDAO;
-=======
->>>>>>> quynh
 import membersDAO.MemberDAOImpl;
 import java.util.Scanner;
 
@@ -17,11 +13,7 @@ public class Main {
     public static void main(String[] args) {
         Event event = new Event();
         EventDAOImpl eventDAO = new EventDAOImpl();
-<<<<<<< HEAD
-        MemberDAO memberDAO = new MemberDAOImpl();
-=======
         MemberDAOImpl memberDAO = new MemberDAOImpl();
->>>>>>> quynh
         while (true) {
             showMenu();
             String choice = scanner.nextLine();
@@ -162,8 +154,4 @@ public class Main {
         String phoneNumber = scanner.nextLine();
         return new Member(name, ID, position, phoneNumber);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> quynh
