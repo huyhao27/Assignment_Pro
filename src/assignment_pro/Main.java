@@ -19,7 +19,7 @@ public class Main {
         EventDAOImpl eventDAO = new EventDAOImpl();
         MemberDAOImpl memberDAO = new MemberDAOImpl();
         
-        Menu menu = new Menu(11);
+        Menu menu = new Menu(12);
         menu.addMenuItem("===== MENU QUẢN LÝ C U LẠC BỘ =====");
         menu.addMenuItem("1. Thêm thành viên mới");
         menu.addMenuItem("2. Xóa thành viên theo mssv");
