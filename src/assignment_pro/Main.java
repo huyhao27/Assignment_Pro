@@ -111,6 +111,7 @@ public class Main {
                     System.out.print("Nhập tên sự kiện cần cập nhật: ");
                     String updateName = scanner.nextLine();
                     Event eventToUpdate = eventDAO.getEventByName(updateName);
+                    Event eventNew = new Event();
                     if (eventToUpdate != null) {
                         int newDay =32, newMonth=0, newYear=0;
                         while (!eventDAO.checkDate(newDay, newMonth,newYear))
@@ -128,10 +129,10 @@ public class Main {
                         event.setDate(String.format("%d/%d/%d", newDay, newMonth, newYear));
                         System.out.print("Nhập địa điểm mới: ");
                         String newLocation = scanner.nextLine();
-                        eventToUpdate.setDate(event.getDate());
-                        eventToUpdate.setLocation(newLocation);
-                        eventDAO.updateEvent(eventToUpdate);
-                        System.out.println("Su kien da dc cap");
+                        eventNew.setDate(event.getDate());
+                        eventNew.setLocation(newLocation);
+                        eventDAO.updateEvent(eventNew,eventToUpdate);
+                    
                     } else {
                         System.out.println("Sự kiện không tồn tại.");
                     }
@@ -175,6 +176,7 @@ public class Main {
         int day=32 , month=0, year=0;
         System.out.print("Nhập tên sự kiện: ");
         String eventName = scanner.nextLine();
+        event.setEventName(eventName);
         while (!eventDAO.checkDate(day, month,year))
             {
             System.out.print("Nhập ngày: ");
@@ -191,6 +193,7 @@ public class Main {
                 
         System.out.print("Nhập địa điểm: ");
         String location = scanner.nextLine();
+        event.setLocation(location);
         return event;
     }
     public static boolean checkPhoneNumber(String phone_Num) {
