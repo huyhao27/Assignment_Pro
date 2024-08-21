@@ -71,7 +71,7 @@ public class Main {
                         updatedMember.setPhoneNumber(scanner.nextLine());
                         memberDAO.updateMember(updatedMember);
                     } else {
-                        System.out.println("Không tìm thấy thành viên.");
+                        System.out.println("==========NO Members Found==========");
                     }
                     
                     break;
@@ -82,7 +82,7 @@ public class Main {
                     if (member != null) {
                         System.out.println(member);
                     } else {
-                        System.out.println("Không tìm thấy thành viên.");
+                        System.out.println("==========NO Members Found==========");
                     }
                     break;
                 case "5": 
@@ -90,10 +90,12 @@ public class Main {
                         System.out.print("Enter name to find: ");
                         String name = scanner.nextLine();
                         memberDAO.printOutByName(name);
-                    }else System.out.println("CLB is EMPTY!");
+                    }else System.out.println("==========CLB is EMPTY!============");
                     break;
                 case "6":
+                    if (!memberDAO.isEmpty()){   
                     memberDAO.getAllMembers().forEach(System.out::println);
+                    }else System.out.println("==========CLB is EMPTY!============");
                     break;
                 case "7": 
                     eventDAO.addEvent(creatEvent());
