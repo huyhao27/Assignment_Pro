@@ -181,7 +181,7 @@ public class Main {
         event.setEventName(eventName);
         boolean validDate = false;
         while (!validDate){
-            try{
+             try{
             System.out.print("Nhập ngày: ");
             day = Integer.parseInt(scanner.nextLine());
             System.out.print("Enter month: ");
