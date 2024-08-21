@@ -11,18 +11,16 @@ public class MemberDAOImpl implements MemberDAO {
 
     @Override
     public boolean addMember(Member member) {
-       if( !isExist(member.getID(),member.getPhoneNumber()))
-        { 
+        if (!isExist(member.getID(), member.getPhoneNumber())) {
             members.add(member);
             System.out.println("Thành viên đã được thêm thành công.");
             return true;
+        } else {
+            System.out.println("SDT or rollnum da ton tai, nhap lai");
+            return false;
         }
-       else {
-           System.out.println("SDT or rollnum da ton tai, nhap lai");
-           return false;
-       }
     }
-    
+
     public static String formatName(String name) {
 
         name = name.trim().toLowerCase();
@@ -40,7 +38,6 @@ public class MemberDAOImpl implements MemberDAO {
 
         return formattedName.toString().trim();
     }
-   
 
     @Override
     public void removeMemberByID(String ID) {
@@ -56,9 +53,9 @@ public class MemberDAOImpl implements MemberDAO {
     @Override
     public void updateMember(Member member, Member updateMember) {
 
-            updateMember.setPosition(member.getPosition());
-            updateMember.setPhoneNumber(member.getPhoneNumber());
-            System.out.println("Thông tin thành viên đã được cập nhật.");
+        updateMember.setPosition(member.getPosition());
+        updateMember.setPhoneNumber(member.getPhoneNumber());
+        System.out.println("Thông tin thành viên đã được cập nhật.");
 
     }
 
@@ -71,10 +68,11 @@ public class MemberDAOImpl implements MemberDAO {
         }
         return null;
     }
-    public void printOutByName(String name){
-        for ( Member member : members){
+
+    public void printOutByName(String name) {
+        for (Member member : members) {
             StringBuilder find = new StringBuilder(member.getName().toLowerCase());
-            if (find.toString().contains(name.toLowerCase())){
+            if (find.toString().contains(name.toLowerCase())) {
                 System.out.println(member);
             }
         }
@@ -104,10 +102,11 @@ public class MemberDAOImpl implements MemberDAO {
         }
         return false;
     }
-    public boolean isEmpty(){
-        if (members.isEmpty() ){
-           return true;
-        } 
+
+    public boolean isEmpty() {
+        if (members.isEmpty()) {
+            return true;
+        }
         return false;
     }
 }

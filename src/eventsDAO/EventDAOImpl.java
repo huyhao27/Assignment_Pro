@@ -7,10 +7,10 @@ import java.util.*;
  * @author ADMIN
  */
 public class EventDAOImpl implements EventDAO{
-    private List<Event> events = new ArrayList<>();
+    private List<Event> events;
 
     public EventDAOImpl() {
-        //events = new ArrayList<>();
+        events = new ArrayList<>();
     }
 
     @Override
@@ -91,5 +91,4 @@ public class EventDAOImpl implements EventDAO{
         } 
         return false;
     }
-    
 }
