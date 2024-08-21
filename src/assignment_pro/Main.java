@@ -25,13 +25,13 @@ public class Main {
         menu.addMenuItem("2. Xóa thành viên theo mssv");
         menu.addMenuItem("3. Cập nhật thông tin thành viên");
         menu.addMenuItem("4. Tìm kiếm sinh viên theo mã sinh viên");
-        menu.addMenuItem("5. Tìm kiếm theo tên và in ra thành viên's ");
+        menu.addMenuItem("5. Tìm kiếm theo tên và in ra thành viên");
         menu.addMenuItem("6. Hiển thị danh sách thành viên");
         menu.addMenuItem("7. Thêm sự kiện");
         menu.addMenuItem("8. Hiển thị danh sách sự kiện");
         menu.addMenuItem("9. Sua");
         menu.addMenuItem("10. xoa sk");
-        menu.addMenuItem("11. Thoat");
+        menu.addMenuItem("0. Thoat");
         
         
       
@@ -85,25 +85,19 @@ public class Main {
                         System.out.println("Không tìm thấy thành viên.");
                     }
                     break;
-                case "5" : 
-                    
-                    System.out.print("Enter name to find: ");
-                    String name = scanner.nextLine();
-                    memberDAO.printOutByName(name);
-                    break;
-                case "6":
+                case "5":
                     memberDAO.getAllMembers().forEach(System.out::println);
                     break;
-                case "7":
+                case "6": 
                     eventDAO.addEvent(creatEvent());
                     break;
-                case "8":
+                case "7":
                     eventDAO.sortEventsByDate();
                     for (Event eventNeedSort : eventDAO.getAllEvents()) {
                         System.out.println(eventNeedSort);
                     }
                     break;
-                case "9":
+                case "8":
                     System.out.print("Nhập tên sự kiện cần cập nhật: ");
                     String updateName = scanner.nextLine();
                     Event eventToUpdate = eventDAO.getEventByName(updateName);
@@ -119,7 +113,7 @@ public class Main {
                         newYear = Integer.parseInt(scanner.nextLine());
                             if(!eventDAO.checkDate(newDay, newMonth,newYear)){
                                 System.out.println("NOT VALID! Please try again...");
-                        }
+                            }
                         }
                         event.setDate(String.format("%d/%d/%d", newDay, newMonth, newYear));
                         System.out.print("Nhập địa điểm mới: ");
@@ -131,12 +125,12 @@ public class Main {
                         System.out.println("Sự kiện không tồn tại.");
                     }
                     break;
-                case "10":
+                case "9":
                     System.out.print("Nhập tên sự kiện cần xóa: ");
                     String deleteName = scanner.nextLine();
                     eventDAO.deleteEvent(deleteName);
                     break;
-                case "11":
+                case "10":
                     System.out.println("Thoát chương trình.");
                     scanner.close();
                     return;
@@ -146,21 +140,7 @@ public class Main {
         }
     }
 
-    // Hiển thị menu chính
-    public static void showMenu() {
-        System.out.println("===== MENU QUẢN LÝ C U LẠC BỘ =====");
-        System.out.println("1. Thêm thành viên mới");
-        System.out.println("2. Xóa thành viên theo mssv");
-        System.out.println("3. Cập nhật thông tin thành viên");
-        System.out.println("4. Tìm kiếm sinh viên theo mã sinh viên");
-        System.out.println("5. Hiển thị danh sách thành viên");
-        System.out.println("6. Thêm sự kiện");
-        System.out.println("7. Hiển thị danh sách sự kiện");
-        System.out.println("8. Sua");
-        System.out.println("9. xoa sk");
-        System.out.println("10. Thoat");
-        System.out.print("Chọn một tùy chọn: ");
-    }  
+    
     public static Member createMember() {
         System.out.print("Nhập tên thành viên: ");
         String name = scanner.nextLine();
