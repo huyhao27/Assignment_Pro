@@ -87,29 +87,8 @@ public class Main {
                 case "5":
                     memberDAO.getAllMembers().forEach(System.out::println);
                     break;
-                case "6":
-                    int day=32 , month=0, year=0;
-                    System.out.print("Nhập tên sự kiện: ");
-                    String eventName = scanner.nextLine();
-                    while (!eventDAO.checkDate(day, month,year))
-                    {
-                    System.out.print("Nhập ngày: ");
-                    day = Integer.parseInt(scanner.nextLine());
-                    System.out.print("Enter month: ");
-                    month = Integer.parseInt(scanner.nextLine());
-                    System.out.print("Enter Year: ");
-                    year = Integer.parseInt(scanner.nextLine());
-                    if(!eventDAO.checkDate(day, month,year)){
-                        System.out.println("NOT VALID! Please try again...");
-                    }
-                    }
-                    event.setDate(String.format("%d/%d/%d", day, month, year));
-                
-                    System.out.print("Nhập địa điểm: ");
-                    String location = scanner.nextLine();
-        
-                    
-                    eventDAO.addEvent(new Event(eventName, event.getDate(), location));
+                case "6": 
+                    eventDAO.addEvent(creatEvent());
                     break;
                 case "7":
                     eventDAO.sortEventsByDate();
@@ -133,7 +112,7 @@ public class Main {
                         newYear = Integer.parseInt(scanner.nextLine());
                             if(!eventDAO.checkDate(newDay, newMonth,newYear)){
                                 System.out.println("NOT VALID! Please try again...");
-                        }
+                            }
                         }
                         event.setDate(String.format("%d/%d/%d", newDay, newMonth, newYear));
                         System.out.print("Nhập địa điểm mới: ");
@@ -191,6 +170,30 @@ public class Main {
                 }
         }while(!checkPhoneNumber(phoneNumber));
         return new Member( name, ID, position, phoneNumber);
+    }
+    public static Event creatEvent(){
+        Event event = new Event();
+        EventDAOImpl eventDAO = new EventDAOImpl();
+        int day=32 , month=0, year=0;
+        System.out.print("Nhập tên sự kiện: ");
+        String eventName = scanner.nextLine();
+        while (!eventDAO.checkDate(day, month,year))
+            {
+            System.out.print("Nhập ngày: ");
+            day = Integer.parseInt(scanner.nextLine());
+            System.out.print("Enter month: ");
+            month = Integer.parseInt(scanner.nextLine());
+            System.out.print("Enter Year: ");
+            year = Integer.parseInt(scanner.nextLine());
+            if(!eventDAO.checkDate(day, month,year)){
+                System.out.println("NOT VALID! Please try again...");
+                }
+            }
+        event.setDate(String.format("%d/%d/%d", day, month, year));
+                
+        System.out.print("Nhập địa điểm: ");
+        String location = scanner.nextLine();
+        return event;
     }
     public static boolean checkPhoneNumber(String phone_Num) {
         return phone_Num.matches("\\d+");
