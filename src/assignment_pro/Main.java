@@ -64,12 +64,13 @@ public class Main {
                     System.out.print("Nhập mã số sinh viên cần cập nhật: ");
                     String updateID = scanner.nextLine();
                     Member updatedMember = memberDAO.findByID(updateID);
+                    Member member = new Member();
                     if (updatedMember != null) {
                         System.out.print("Nhập vị trí mới: ");
-                        updatedMember.setPosition(scanner.nextLine());
+                        member.setPosition(scanner.nextLine());
                         System.out.print("Nhập số điện thoại mới: ");
-                        updatedMember.setPhoneNumber(scanner.nextLine());
-                        memberDAO.updateMember(updatedMember);
+                        member.setPhoneNumber(scanner.nextLine());
+                        memberDAO.updateMember(member, updatedMember);
                     } else {
                         System.out.println("Không tìm thấy thành viên.");
                     }
@@ -78,9 +79,9 @@ public class Main {
                 case "4":
                     System.out.print("Nhập mã số sinh viên cần tìm: ");
                     String findID = scanner.nextLine();
-                    Member member = memberDAO.findByID(findID);
-                    if (member != null) {
-                        System.out.println(member);
+                    Member memberFind = memberDAO.findByID(findID);
+                    if (memberFind != null) {
+                        System.out.println(memberFind);
                     } else {
                         System.out.println("Không tìm thấy thành viên.");
                     }
@@ -121,6 +122,7 @@ public class Main {
                         eventToUpdate.setDate(event.getDate());
                         eventToUpdate.setLocation(newLocation);
                         eventDAO.updateEvent(eventToUpdate);
+                        System.out.println("Su kien da dc cap");
                     } else {
                         System.out.println("Sự kiện không tồn tại.");
                     }
