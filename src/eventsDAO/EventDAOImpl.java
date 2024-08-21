@@ -27,23 +27,22 @@ public class EventDAOImpl implements EventDAO{
     @Override
     public Event getEventByName(String eventName) {
         for (Event event : events) {
-            if (event.getEventName().equalsIgnoreCase(eventName)) {
-                return event;
+            if (event != null) {
+                if (event.getEventName().equalsIgnoreCase(eventName)) {
+                    return event;
+                }
             }
         }
         return null;
     }
 
     @Override
-    public void updateEvent(Event event) {
-        Event existingEvent = getEventByName(event.getEventName());
-        if (existingEvent != null) {
-            existingEvent.setDate(event.getDate());
-            existingEvent.setLocation(event.getLocation());
+    public void updateEvent(Event event, Event eventUpdate) {
+        
+            eventUpdate.setDate(event.getDate());
+            eventUpdate.setLocation(event.getLocation());
             System.out.println("Sự kiện đã được cập nhật.");
-        } else {
-            System.out.println("Sự kiện không tồn tại.");
-        }
+        
     }
 
     @Override
