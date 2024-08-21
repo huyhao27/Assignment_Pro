@@ -55,6 +55,6 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Rollnumber: " + ID + ", Ten: " + name + ", Vi tri: " + position + ", SSDT: " + phoneNumber;
+        return "Rollnumber: " + ID + ", Name: " + name + ", Position: " + position + ", Phone Number: " + phoneNumber;
     }
 }

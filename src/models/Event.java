@@ -48,6 +48,6 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Tên sự kiện: " + eventName + ", Ngày: " + date + ", Địa điểm: " + location;
+        return "Event Name: " + eventName + ", Day: " + date + ", Location: " + location;
     }
 }

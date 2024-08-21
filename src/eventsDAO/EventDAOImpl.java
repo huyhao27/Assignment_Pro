@@ -16,7 +16,7 @@ public class EventDAOImpl implements EventDAO{
     @Override
     public void addEvent(Event event) {
         events.add(event);
-        System.out.println("Sự kiện đã được thêm thành công.");
+        System.out.println("Event added successfully.");
     }
 
     @Override
@@ -41,7 +41,7 @@ public class EventDAOImpl implements EventDAO{
         
             eventUpdate.setDate(event.getDate());
             eventUpdate.setLocation(event.getLocation());
-            System.out.println("Sự kiện đã được cập nhật.");
+            System.out.println("Event has been updated.");
         
     }
 
@@ -50,9 +50,9 @@ public class EventDAOImpl implements EventDAO{
         Event event = getEventByName(eventName);
         if (event != null) {
             events.remove(event);
-            System.out.println("Sự kiện đã được xóa.");
+            System.out.println("The event has been deleted.");
         } else {
-            System.out.println("Sự kiện không tồn tại.");
+            System.out.println("Event does not exist.");
         }
     }
 
