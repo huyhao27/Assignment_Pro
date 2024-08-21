@@ -13,10 +13,10 @@ public class MemberDAOImpl implements MemberDAO {
     public boolean addMember(Member member) {
         if (!isExist(member.getID(), member.getPhoneNumber())) {
             members.add(member);
-            System.out.println("Thành viên đã được thêm thành công.");
+            System.out.println("Member added successfully.");
             return true;
         } else {
-            System.out.println("SDT or rollnum da ton tai, nhap lai");
+            System.out.println("The phone number or roll number already exists, please re-enter.");
             return false;
         }
     }
@@ -44,9 +44,9 @@ public class MemberDAOImpl implements MemberDAO {
         Member memberToRemove = findByID(ID);
         if (memberToRemove != null) {
             members.remove(memberToRemove);
-            System.out.println("Thành viên đã được xóa.");
+            System.out.println("Member has been deleted.");
         } else {
-            System.out.println("Không tìm thấy thành viên.");
+            System.out.println("No members found.");
         }
     }
 
@@ -55,7 +55,7 @@ public class MemberDAOImpl implements MemberDAO {
 
         updateMember.setPosition(member.getPosition());
         updateMember.setPhoneNumber(member.getPhoneNumber());
-        System.out.println("Thông tin thành viên đã được cập nhật.");
+        System.out.println("Member information has been updated.");
 
     }
 
