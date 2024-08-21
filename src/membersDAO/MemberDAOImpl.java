@@ -72,11 +72,9 @@ public class MemberDAOImpl implements MemberDAO {
         return null;
     }
     public void printOutByName(String name){
-        if (members.isEmpty()){
-           System.out.println("CLB is empty!");
-         } 
         for ( Member member : members){
-            if (member.getName().contains(name)){
+            StringBuilder find = new StringBuilder(member.getName().toLowerCase());
+            if (find.toString().contains(name.toLowerCase())){
                 System.out.println(member);
             }
         }
@@ -104,6 +102,12 @@ public class MemberDAOImpl implements MemberDAO {
                 return true;
             }
         }
+        return false;
+    }
+    public boolean isEmpty(){
+        if (members.isEmpty()){
+           return true;
+        } 
         return false;
     }
 }

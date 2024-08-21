@@ -86,6 +86,13 @@ public class Main {
                         System.out.println("Không tìm thấy thành viên.");
                     }
                     break;
+                case "5": 
+                    if (!memberDAO.isEmpty()){
+                        System.out.print("Enter name to find: ");
+                        String name = scanner.nextLine();
+                        memberDAO.printOutByName(name);
+                    }else System.out.println("CLB is EMPTY!");
+                    break;
                 case "6":
                     memberDAO.getAllMembers().forEach(System.out::println);
                     break;
