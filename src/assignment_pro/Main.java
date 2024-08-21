@@ -87,7 +87,7 @@ public class Main {
                     }
                     break;
                 case "5": 
-                    if (!memberDAO.isEmpty()){
+                    if (!eventDAO.isEmpty()){
                         System.out.print("Enter name to find: ");
                         String name = scanner.nextLine();
                         memberDAO.printOutByName(name);
@@ -102,10 +102,12 @@ public class Main {
                     eventDAO.addEvent(creatEvent());
                     break;
                 case "8":
-                    eventDAO.sortEventsByDate();
-                    for (Event eventNeedSort : eventDAO.getAllEvents()) {
-                        System.out.println(eventNeedSort);
-                    }
+                    if(!eventDAO.isEmpty()){
+                        eventDAO.sortEventsByDate();
+                        for (Event eventNeedSort : eventDAO.getAllEvents()) {
+                            System.out.println(eventNeedSort);
+                        }
+                    }else System.out.println("=======NO Events Found========");
                     break;
                 case "9":
                     System.out.print("Nhập tên sự kiện cần cập nhật: ");

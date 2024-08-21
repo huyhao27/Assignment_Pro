@@ -7,10 +7,10 @@ import java.util.*;
  * @author ADMIN
  */
 public class EventDAOImpl implements EventDAO{
-    private List<Event> events;
+    private List<Event> events = new ArrayList<>();
 
     public EventDAOImpl() {
-        events = new ArrayList<>();
+        //events = new ArrayList<>();
     }
 
     @Override
@@ -85,6 +85,12 @@ public class EventDAOImpl implements EventDAO{
 	    }else maxD = 28;
 	}
 	return d <= maxD;
+    }
+    public boolean isEmpty(){
+        if (events.isEmpty() ){
+           return true;
+        } 
+        return false;
     }
     
 }

@@ -105,7 +105,7 @@ public class MemberDAOImpl implements MemberDAO {
         return false;
     }
     public boolean isEmpty(){
-        if (members.isEmpty()){
+        if (members.isEmpty() ){
            return true;
         } 
         return false;
