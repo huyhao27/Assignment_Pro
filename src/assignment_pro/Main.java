@@ -85,19 +85,19 @@ public class Main {
                         System.out.println("Không tìm thấy thành viên.");
                     }
                     break;
-                case "5":
+                case "6":
                     memberDAO.getAllMembers().forEach(System.out::println);
                     break;
-                case "6": 
+                case "7": 
                     eventDAO.addEvent(creatEvent());
                     break;
-                case "7":
+                case "8":
                     eventDAO.sortEventsByDate();
                     for (Event eventNeedSort : eventDAO.getAllEvents()) {
                         System.out.println(eventNeedSort);
                     }
                     break;
-                case "8":
+                case "9":
                     System.out.print("Nhập tên sự kiện cần cập nhật: ");
                     String updateName = scanner.nextLine();
                     Event eventToUpdate = eventDAO.getEventByName(updateName);
@@ -125,12 +125,12 @@ public class Main {
                         System.out.println("Sự kiện không tồn tại.");
                     }
                     break;
-                case "9":
+                case "10":
                     System.out.print("Nhập tên sự kiện cần xóa: ");
                     String deleteName = scanner.nextLine();
                     eventDAO.deleteEvent(deleteName);
                     break;
-                case "10":
+                case "0":
                     System.out.println("Thoát chương trình.");
                     scanner.close();
                     return;
