@@ -25,12 +25,13 @@ public class Main {
         menu.addMenuItem("2. Xóa thành viên theo mssv");
         menu.addMenuItem("3. Cập nhật thông tin thành viên");
         menu.addMenuItem("4. Tìm kiếm sinh viên theo mã sinh viên");
-        menu.addMenuItem("5. Hiển thị danh sách thành viên");
-        menu.addMenuItem("6. Thêm sự kiện");
-        menu.addMenuItem("7. Hiển thị danh sách sự kiện");
-        menu.addMenuItem("8. Sua");
-        menu.addMenuItem("9. xoa sk");
-        menu.addMenuItem("10. Thoat");
+        menu.addMenuItem("5. Tìm kiếm theo tên và in ra thành viên");
+        menu.addMenuItem("6. Hiển thị danh sách thành viên");
+        menu.addMenuItem("7. Thêm sự kiện");
+        menu.addMenuItem("8. Hiển thị danh sách sự kiện");
+        menu.addMenuItem("9. Sua");
+        menu.addMenuItem("10. xoa sk");
+        menu.addMenuItem("0. Thoat");
         
         
       
@@ -139,21 +140,7 @@ public class Main {
         }
     }
 
-    // Hiển thị menu chính
-    public static void showMenu() {
-        System.out.println("===== MENU QUẢN LÝ C U LẠC BỘ =====");
-        System.out.println("1. Thêm thành viên mới");
-        System.out.println("2. Xóa thành viên theo mssv");
-        System.out.println("3. Cập nhật thông tin thành viên");
-        System.out.println("4. Tìm kiếm sinh viên theo mã sinh viên");
-        System.out.println("5. Hiển thị danh sách thành viên");
-        System.out.println("6. Thêm sự kiện");
-        System.out.println("7. Hiển thị danh sách sự kiện");
-        System.out.println("8. Sua");
-        System.out.println("9. xoa sk");
-        System.out.println("10. Thoat");
-        System.out.print("Chọn một tùy chọn: ");
-    }  
+    
     public static Member createMember() {
         System.out.print("Nhập tên thành viên: ");
         String name = scanner.nextLine();
