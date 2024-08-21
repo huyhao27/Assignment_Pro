@@ -1,4 +1,4 @@
-
+package assignment_pro;
 
 import managers.MemberManager;
 import assignment_pro.Menu;
