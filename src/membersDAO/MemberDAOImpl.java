@@ -2,6 +2,7 @@ package membersDAO;
 
 import models.Member;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class MemberDAOImpl implements MemberDAO {
@@ -39,6 +40,7 @@ public class MemberDAOImpl implements MemberDAO {
 
         return formattedName.toString().trim();
     }
+   
 
     @Override
     public void removeMemberByID(String ID) {
@@ -72,16 +74,36 @@ public class MemberDAOImpl implements MemberDAO {
         }
         return null;
     }
+    public void printOutByName(String name){
+        if (members.isEmpty()){
+           System.out.println("CLB is empty!");
+         } 
+        for ( Member member : members){
+            if (member.getName().contains(name)){
+                System.out.println(member);
+            }
+        }
+    }
 
     @Override
     public List<Member> getAllMembers() {
         return members;
     }
 
+    /*public boolean isExist(String checkID, String checkPhone) {
+        for (Member member : members) {
+            if (member.getID().equalsIgnoreCase(checkID) 
+                || member.getPhoneNumber().equals(checkPhone)) {
+                return true;
+            }
+        }
+        return false;
+    }*/
     @Override
     public boolean isExist(String checkID, String checkPhone) {
         for (Member member : members) {
-            if (member.getID().equalsIgnoreCase(checkID) || member.getPhoneNumber().equals(checkPhone)) {
+            if (member.getID().equalsIgnoreCase(checkID)
+                    || member.getPhoneNumber().equals(checkPhone)) {
                 return true;
             }
         }

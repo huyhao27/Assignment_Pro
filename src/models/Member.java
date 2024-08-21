@@ -12,7 +12,9 @@ public class Member {
     public Member() {
     }
 
+
     public Member(String name, String ID, String position, String phoneNumber) {
+
         this.name = formatName(name);
         this.ID = ID;
         this.position = position;
