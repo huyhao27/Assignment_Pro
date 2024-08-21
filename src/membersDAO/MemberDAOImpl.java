@@ -54,15 +54,12 @@ public class MemberDAOImpl implements MemberDAO {
     }
 
     @Override
-    public void updateMember(Member member) {
-        Member existingMember = findByID(member.getID());
-        if (existingMember != null) {
-            existingMember.setPosition(member.getPosition());
-            existingMember.setPhoneNumber(member.getPhoneNumber());
+    public void updateMember(Member member, Member updateMember) {
+
+            updateMember.setPosition(member.getPosition());
+            updateMember.setPhoneNumber(member.getPhoneNumber());
             System.out.println("Thông tin thành viên đã được cập nhật.");
-        } else {
-            System.out.println("Không tìm thấy thành viên.");
-        }
+
     }
 
     @Override
