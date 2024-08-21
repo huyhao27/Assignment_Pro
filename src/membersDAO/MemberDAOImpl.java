@@ -74,6 +74,16 @@ public class MemberDAOImpl implements MemberDAO {
         }
         return null;
     }
+    public void printOutByName(String name){
+        if (members.isEmpty()){
+           System.out.println("CLB is empty!");
+         } 
+        for ( Member member : members){
+            if (member.getName().contains(name)){
+                System.out.println(member);
+            }
+        }
+    }
 
     @Override
     public List<Member> getAllMembers() {
