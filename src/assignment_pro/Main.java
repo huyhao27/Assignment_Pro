@@ -179,8 +179,9 @@ public class Main {
         System.out.print("Nhập tên sự kiện: ");
         String eventName = scanner.nextLine();
         event.setEventName(eventName);
-        while (!eventDAO.checkDate(day, month,year))
-            {
+        boolean validDate = false;
+        while (!validDate){
+            try{
             System.out.print("Nhập ngày: ");
             day = Integer.parseInt(scanner.nextLine());
             System.out.print("Enter month: ");
@@ -190,7 +191,15 @@ public class Main {
             if(!eventDAO.checkDate(day, month,year)){
                 System.out.println("NOT VALID! Please try again...");
                 }
+             else {
+                validDate = true; // Đánh dấu rằng ngày đã hợp lệ
             }
+            } catch(NumberFormatException e){
+         
+            System.out.println("Vui lòng nhập số hợp lệ cho ngày, tháng, và năm!");
+            }
+        }
+            
         event.setDate(String.format("%d/%d/%d", day, month, year));
                 
         System.out.print("Nhập địa điểm: ");
