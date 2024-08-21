@@ -22,20 +22,20 @@ public class Menu {
         }
     }
 
-    public int getChoice() {
-        int choice = 0;
-        if (count > 0) {
-            for (int i = 0; i < count; i++) {
-                System.out.println((i + 1) + ". " + menuItems[i]);
-            }
-        }
-        System.out.print("Please select an option: ");
-        Scanner sc = new Scanner(System.in);
-        if (sc.hasNextInt()) {
-            choice = sc.nextInt();
-        }
-        return choice;
-    }
+//    public int getChoice() {
+//        int choice = 0;
+//        if (count > 0) {
+//            for (int i = 0; i < count; i++) {
+//                System.out.println((i + 1) + ". " + menuItems[i]);
+//            }
+//        }
+//        System.out.print("Please select an option: ");
+//        Scanner sc = new Scanner(System.in);
+//        if (sc.hasNextInt()) {
+//            choice = sc.nextInt();
+//        }
+//        return choice;
+//    }
     public void showMenu(){
         for(int i=0;i<size; i++){
             System.out.println(this.menuItems[i]);
