@@ -85,5 +85,10 @@ public class EventDAOImpl implements EventDAO{
 	}
 	return d <= maxD;
     }
-    
+    public boolean isEmpty(){
+        if (events.isEmpty() ){
+           return true;
+        } 
+        return false;
+    }
 }

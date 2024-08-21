@@ -1,9 +1,9 @@
 package models;
 
-
 import static membersDAO.MemberDAOImpl.formatName;
 
 public class Member {
+
     private String name;
     private String position;
     private String phoneNumber;
@@ -11,7 +11,6 @@ public class Member {
 
     public Member() {
     }
-
 
     public Member(String name, String ID, String position, String phoneNumber) {
 
