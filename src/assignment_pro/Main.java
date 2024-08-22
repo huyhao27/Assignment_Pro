@@ -17,7 +17,7 @@ public class Main {
         EventDAOImpl eventDAO = new EventDAOImpl();
         MemberDAOImpl memberDAO = new MemberDAOImpl();
 
-        Menu menu = new Menu(12);
+        Menu menu = new Menu(13);
         menu.addMenuItem("===== CLUB MANAGEMENT MENU =====");
         menu.addMenuItem("1. Add new member.");
         menu.addMenuItem("2. Remove member by student RollNumber(ID).");
@@ -27,8 +27,9 @@ public class Main {
         menu.addMenuItem("6. Show member list.");
         menu.addMenuItem("7. Add event.");
         menu.addMenuItem("8. Show event list.");
-        menu.addMenuItem("9. Update event.");
-        menu.addMenuItem("10.Delete event.");
+        menu.addMenuItem("9. Search by name and print out event(s).");
+        menu.addMenuItem("10. Update event.");
+        menu.addMenuItem("11.Delete event.");
         menu.addMenuItem("0. Exit program.");
 
         MemberManager memberManager = new MemberManager();
@@ -97,7 +98,7 @@ public class Main {
                         String name = scanner.nextLine();
                         memberDAO.printOutByName(name);
                     } else {
-                        System.out.println("==========CLUB is EMPTY!============");
+                        System.out.println("==========Person does not exist!============");
                     }
                     break;
                 case "6":
@@ -121,6 +122,15 @@ public class Main {
                     }
                     break;
                 case "9":
+                    if (!eventDAO.isEmpty()) {
+                        System.out.print("Enter name event to find: ");
+                        String name = scanner.nextLine();
+                        eventDAO.printOutByName(name);
+                    } else {
+                        System.out.println("==========Event does not exist !============");
+                    }
+                    break;
+                case "10":
                     System.out.print("Enter the event name to update: ");
                     String updateName = scanner.nextLine();
                     Event eventToUpdate = eventDAO.getEventByName(updateName);
@@ -149,7 +159,7 @@ public class Main {
                         System.out.println("=======NO Events Found========");
                     }
                     break;
-                case "10":
+                case "11":
                     System.out.print("Enter the name of the event to remove: ");
                     String deleteName = scanner.nextLine();
                     eventDAO.deleteEvent(deleteName);
