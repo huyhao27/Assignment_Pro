@@ -16,7 +16,7 @@ public class EventDAOImpl implements EventDAO{
     @Override
     public void addEvent(Event event) {
         events.add(event);
-        System.out.println("Event added successfully.");
+        System.out.println("=====Event added successfully=====");
     }
 
     @Override
@@ -86,9 +86,19 @@ public class EventDAOImpl implements EventDAO{
 	return d <= maxD;
     }
     public boolean isEmpty(){
-        if (events.isEmpty() ){
-           return true;
-        } 
-        return false;
+        return events.isEmpty();
+    }
+    public boolean checkExistOfEventName(String newEventName){
+        if(events.isEmpty()){
+            System.out.println("den day r");
+            return true;
+        }
+        
+        for (Event o : events ){
+            if( o.getEventName().equalsIgnoreCase(newEventName)){
+                return false;
+            }
+        }
+        return true;
     }
 }

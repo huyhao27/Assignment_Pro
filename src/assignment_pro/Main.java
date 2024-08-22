@@ -201,9 +201,12 @@ public class Main {
             System.out.print("Enter event name: ");
             eventName = scanner.nextLine();
             if (!isValidInput(eventName)) {
-                System.out.println("======INVALID NAME======");
+                System.out.println("======INVALID NAME OR NAME'S EXISTED======");
             }
-        } while (!isValidInput(eventName));
+            if ( !eventDAO.checkExistOfEventName(eventName)){
+                System.out.println("hello");
+            }
+        } while (!isValidInput(eventName) || !eventDAO.checkExistOfEventName(eventName));
         event.setEventName(eventName);
         boolean validDate = false;
         while (!validDate) {
@@ -235,6 +238,7 @@ public class Main {
             }
         } while (!isValidInput(location));
         event.setLocation(location);
+        
         return event;
     }
 
