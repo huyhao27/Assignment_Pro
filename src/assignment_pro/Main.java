@@ -55,9 +55,14 @@ public class Main {
 
                     break;
                 case "3":
+                    
                     System.out.print("Enter student ID to update: ");
                     String updateID = scanner.nextLine();
                     Member updatedMember = memberDAO.findByID(updateID);
+                    if (updatedMember == null){
+                        System.out.println("=======NO Members Found========");
+                        break;
+                    }
                     Member member = new Member();
                     String newPhoneNumber;
                     String position;
@@ -74,10 +79,7 @@ public class Main {
                         member.setPhoneNumber(newPhoneNumber);
                         member.setPosition(position);
                         memberDAO.updateMember(member, updatedMember);
-                    } else {
-                        System.out.println("=======NO Members Found========");
-                    }
-
+                    } 
                     break;
                 case "4":
                     System.out.print("Enter the student ID are looking for: ");
