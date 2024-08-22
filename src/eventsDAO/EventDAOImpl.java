@@ -21,7 +21,7 @@ public class EventDAOImpl implements EventDAO{
 
     @Override
     public List<Event> getAllEvents() {
-        return events;
+        return this.events;
     }
 
     @Override
@@ -86,9 +86,16 @@ public class EventDAOImpl implements EventDAO{
 	return d <= maxD;
     }
     public boolean isEmpty(){
-        if (events.isEmpty() ){
-           return true;
-        } 
-        return false;
+        return events.isEmpty();
     }
+    public boolean checkValidOfEvent(String eventName){
+        
+        for ( Event o : this.events){
+            if ( o.getEventName().equalsIgnoreCase(eventName) ){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
