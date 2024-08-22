@@ -109,9 +109,9 @@ public class MemberDAOImpl implements MemberDAO {
         }
         return false;
     }
-    public boolean checkValidOfPhoneNumber(String newPhoneNumber){
+    public boolean checkValidOfPhoneNumber(String newPhoneNumber, String updateID){
         for ( Member o : members){
-            if ( o.getPhoneNumber().equals(newPhoneNumber) ){
+            if ( !o.getID().equalsIgnoreCase(updateID)&& o.getPhoneNumber().equals(newPhoneNumber) ){
                 return false;
             }
         }

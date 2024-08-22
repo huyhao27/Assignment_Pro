@@ -67,10 +67,10 @@ public class Main {
                         do{
                             System.out.print("Enter NEW Phone Number: ");
                             newPhoneNumber = scanner.nextLine();
-                            if (!memberDAO.checkValidOfPhoneNumber(newPhoneNumber)){
+                            if (!memberDAO.checkValidOfPhoneNumber(newPhoneNumber, updateID)){
                                 System.out.println("PhoneNumber is existed, please try again...");
                                 }   
-                        }while (!memberDAO.checkValidOfPhoneNumber(newPhoneNumber));
+                        }while (!memberDAO.checkValidOfPhoneNumber(newPhoneNumber, updateID));
                         member.setPhoneNumber(newPhoneNumber);
                         member.setPosition(position);
                         memberDAO.updateMember(member, updatedMember);
