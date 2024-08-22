@@ -59,11 +59,20 @@ public class Main {
                     String updateID = scanner.nextLine();
                     Member updatedMember = memberDAO.findByID(updateID);
                     Member member = new Member();
+                    String newPhoneNumber;
+                    String position;
+                    System.out.print("Enter NEW Position: ");
+                    position = scanner.nextLine();
                     if (updatedMember != null) {
-                        System.out.print("Enter NEW Position: ");
-                        member.setPosition(scanner.nextLine());
-                        System.out.print("Enter NEW Phone Number: ");
-                        member.setPhoneNumber(scanner.nextLine());
+                        do{
+                            System.out.print("Enter NEW Phone Number: ");
+                            newPhoneNumber = scanner.nextLine();
+                            if (!memberDAO.checkValidOfPhoneNumber(newPhoneNumber)){
+                                System.out.println("PhoneNumber is existed, please try again...");
+                                }   
+                        }while (!memberDAO.checkValidOfPhoneNumber(newPhoneNumber));
+                        member.setPhoneNumber(newPhoneNumber);
+                        member.setPosition(position);
                         memberDAO.updateMember(member, updatedMember);
                     } else {
                         System.out.println("=======NO Members Found========");
