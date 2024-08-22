@@ -93,10 +93,21 @@ public class Main {
                     }
                     break;
                 case "5":
+                    boolean isValid = true;
+                    String name_case5;
                     if (!memberDAO.isEmpty()) {
+                        do{
                         System.out.print("Enter name to find: ");
-                        String name = scanner.nextLine();
-                        memberDAO.printOutByName(name);
+                        name_case5 = scanner.nextLine();
+                        if (!isValidInput(name_case5)) {
+                            System.out.println("======INVALID INPUT======");
+                            isValid = false;
+                        }else{
+                            isValid = true;
+                        }
+                        }while (!isValid);
+                        
+                        memberDAO.printOutByName(name_case5);
                     } else {
                         System.out.println("==========Person does not exist!============");
                     }
@@ -122,12 +133,23 @@ public class Main {
                     }
                     break;
                 case "9":
+                    boolean isValid_case9 = true;
+                    String name_case9;
                     if (!eventDAO.isEmpty()) {
+                        do{
                         System.out.print("Enter name event to find: ");
-                        String name = scanner.nextLine();
-                        eventDAO.printOutByName(name);
+                        name_case9 = scanner.nextLine();
+                        if (!isValidInput(name_case9)) {
+                            System.out.println("======INVALID INPUT======");
+                            isValid = false;
+                        }else{
+                            isValid = true;
+                        }
+                        }while (!isValid);
+                        
+                        eventDAO.printOutByName(name_case9);
                     } else {
-                        System.out.println("==========Event does not exist !============");
+                        System.out.println("==========Event does not exist!============");
                     }
                     break;
                 case "10":
