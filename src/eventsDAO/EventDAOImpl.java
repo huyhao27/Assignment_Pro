@@ -16,12 +16,12 @@ public class EventDAOImpl implements EventDAO{
     @Override
     public void addEvent(Event event) {
         events.add(event);
-        System.out.println("=====Event added successfully=====");
+        System.out.println("Event added successfully.");
     }
 
     @Override
     public List<Event> getAllEvents() {
-        return events;
+        return this.events;
     }
 
     @Override
@@ -88,17 +88,14 @@ public class EventDAOImpl implements EventDAO{
     public boolean isEmpty(){
         return events.isEmpty();
     }
-    public boolean checkExistOfEventName(String newEventName){
-        if(events.isEmpty()){
-            System.out.println("den day r");
-            return true;
-        }
+    public boolean checkValidOfEvent(String eventName){
         
-        for (Event o : events ){
-            if( o.getEventName().equalsIgnoreCase(newEventName)){
+        for ( Event o : this.events){
+            if ( o.getEventName().equalsIgnoreCase(eventName) ){
                 return false;
             }
         }
         return true;
     }
+
 }

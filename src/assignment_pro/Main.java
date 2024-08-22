@@ -106,7 +106,7 @@ public class Main {
                     }
                     break;
                 case "7":
-                    eventDAO.addEvent(creatEvent());
+                    eventDAO.addEvent(createEvent());
                     break;
                 case "8":
                     if (!eventDAO.isEmpty()) {
@@ -192,7 +192,7 @@ public class Main {
         return new Member(name, ID, position, phoneNumber);
     }
 
-    public static Event creatEvent() {
+    public static Event createEvent() {
         Event event = new Event();
         EventDAOImpl eventDAO = new EventDAOImpl();
         int day = 32, month = 0, year = 0;
@@ -200,13 +200,11 @@ public class Main {
         do {
             System.out.print("Enter event name: ");
             eventName = scanner.nextLine();
-            if (!isValidInput(eventName)) {
-                System.out.println("======INVALID NAME OR NAME'S EXISTED======");
+            if (!isValidInput(eventName)||
+                !eventDAO.checkValidOfEvent(eventName)) {
+                System.out.println("======INVALID NAME======");
             }
-            if ( !eventDAO.checkExistOfEventName(eventName)){
-                System.out.println("hello");
-            }
-        } while (!isValidInput(eventName) || !eventDAO.checkExistOfEventName(eventName));
+        } while (!isValidInput(eventName)|| !eventDAO.checkValidOfEvent(eventName));
         event.setEventName(eventName);
         boolean validDate = false;
         while (!validDate) {
@@ -238,7 +236,6 @@ public class Main {
             }
         } while (!isValidInput(location));
         event.setLocation(location);
-        
         return event;
     }
 
