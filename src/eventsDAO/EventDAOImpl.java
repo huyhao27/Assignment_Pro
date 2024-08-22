@@ -97,5 +97,12 @@ public class EventDAOImpl implements EventDAO{
         }
         return true;
     }
-
+    public void printOutByName(String name) {
+        for (Event event : events) {
+            StringBuilder find = new StringBuilder(event.getEventName().toLowerCase());
+            if (find.toString().contains(name.toLowerCase())) {
+                System.out.println(event);
+            }
+        }
+    }
 }
