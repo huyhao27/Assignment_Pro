@@ -13,10 +13,10 @@ public class MemberDAOImpl implements MemberDAO {
     public boolean addMember(Member member) {
         if (!isExist(member.getID(), member.getPhoneNumber())) {
             members.add(member);
-            System.out.println("Member added successfully.");
+            System.out.println("-----Member added successfully-----");
             return true;
         } else {
-            System.out.println("The phone number or roll number already exists, please re-enter.");
+            System.out.println("-----The phone number or roll number already exists, please re-enter-----");
             return false;
         }
     }
@@ -44,9 +44,9 @@ public class MemberDAOImpl implements MemberDAO {
         Member memberToRemove = findByID(ID);
         if (memberToRemove != null) {
             members.remove(memberToRemove);
-            System.out.println("Member has been deleted.");
+            System.out.println("-----Member has been deleted-----");
         } else {
-            System.out.println("No members found.");
+            System.out.println("-----No members found-----");
         }
     }
 
@@ -55,7 +55,7 @@ public class MemberDAOImpl implements MemberDAO {
 
         updateMember.setPosition(member.getPosition());
         updateMember.setPhoneNumber(member.getPhoneNumber());
-        System.out.println("Member information has been updated.");
+        System.out.println("-----Member information has been updated-----");
 
     }
 
@@ -82,16 +82,6 @@ public class MemberDAOImpl implements MemberDAO {
     public List<Member> getAllMembers() {
         return members;
     }
-
-    /*public boolean isExist(String checkID, String checkPhone) {
-        for (Member member : members) {
-            if (member.getID().equalsIgnoreCase(checkID) 
-                || member.getPhoneNumber().equals(checkPhone)) {
-                return true;
-            }
-        }
-        return false;
-    }*/
     @Override
     public boolean isExist(String checkID, String checkPhone) {
         for (Member member : members) {
