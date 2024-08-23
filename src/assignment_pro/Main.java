@@ -1,6 +1,6 @@
 package assignment_pro;
 
-import managers.MemberManager;
+
 import assignment_pro.Menu;
 import models.Event;
 import eventsDAO.EventDAOImpl;
@@ -32,12 +32,12 @@ public class Main {
         menu.addMenuItem("11.Delete event.");
         menu.addMenuItem("0. Exit program.");
 
-        MemberManager memberManager = new MemberManager();
+        //MemberManager memberManager = new MemberManager();
 
         while (true) {
             //      showMenu();
             menu.showMenu();
-            System.out.print("Select an option:");
+            System.out.print("Select an option: ");
             String choice = scanner.nextLine();
 
             switch (choice) {
@@ -56,11 +56,11 @@ public class Main {
 
                     break;
                 case "3":
-                    
+
                     System.out.print("Enter student ID to update: ");
                     String updateID = scanner.nextLine();
                     Member updatedMember = memberDAO.findByID(updateID);
-                    if (updatedMember == null){
+                    if (updatedMember == null) {
                         System.out.println("=======NO Members Found========");
                         break;
                     }
@@ -70,17 +70,17 @@ public class Main {
                     System.out.print("Enter NEW Position: ");
                     position = scanner.nextLine();
                     if (updatedMember != null) {
-                        do{
+                        do {
                             System.out.print("Enter NEW Phone Number: ");
                             newPhoneNumber = scanner.nextLine();
-                            if (!memberDAO.checkValidOfPhoneNumber(newPhoneNumber, updateID)){
-                                System.out.println("PhoneNumber is existed, please try again...");
-                                }   
-                        }while (!memberDAO.checkValidOfPhoneNumber(newPhoneNumber, updateID));
+                            if (!memberDAO.checkValidOfPhoneNumber(newPhoneNumber, updateID)) {
+                                System.out.println("-----PhoneNumber is existed, please try again...-----");
+                            }
+                        } while (!memberDAO.checkValidOfPhoneNumber(newPhoneNumber, updateID));
                         member.setPhoneNumber(newPhoneNumber);
                         member.setPosition(position);
                         memberDAO.updateMember(member, updatedMember);
-                    } 
+                    }
                     break;
                 case "4":
                     System.out.print("Enter the student ID are looking for: ");
@@ -96,17 +96,17 @@ public class Main {
                     boolean isValid = true;
                     String name_case5;
                     if (!memberDAO.isEmpty()) {
-                        do{
-                        System.out.print("Enter name to find: ");
-                        name_case5 = scanner.nextLine();
-                        if (!isValidInput(name_case5)) {
-                            System.out.println("======INVALID INPUT======");
-                            isValid = false;
-                        }else{
-                            isValid = true;
-                        }
-                        }while (!isValid);
-                        
+                        do {
+                            System.out.print("Enter name to find: ");
+                            name_case5 = scanner.nextLine();
+                            if (!isValidInput(name_case5)) {
+                                System.out.println("======INVALID INPUT======");
+                                isValid = false;
+                            } else {
+                                isValid = true;
+                            }
+                        } while (!isValid);
+
                         memberDAO.printOutByName(name_case5);
                     } else {
                         System.out.println("==========Person does not exist!============");
@@ -136,17 +136,17 @@ public class Main {
                     boolean isValid_case9 = true;
                     String name_case9;
                     if (!eventDAO.isEmpty()) {
-                        do{
-                        System.out.print("Enter name event to find: ");
-                        name_case9 = scanner.nextLine();
-                        if (!isValidInput(name_case9)) {
-                            System.out.println("======INVALID INPUT======");
-                            isValid = false;
-                        }else{
-                            isValid = true;
-                        }
-                        }while (!isValid);
-                        
+                        do {
+                            System.out.print("Enter name event to find: ");
+                            name_case9 = scanner.nextLine();
+                            if (!isValidInput(name_case9)) {
+                                System.out.println("======INVALID INPUT======");
+                                isValid = false;
+                            } else {
+                                isValid = true;
+                            }
+                        } while (!isValid);
+
                         eventDAO.printOutByName(name_case9);
                     } else {
                         System.out.println("==========Event does not exist!============");
@@ -167,7 +167,7 @@ public class Main {
                             System.out.print("Enter Year: ");
                             newYear = Integer.parseInt(scanner.nextLine());
                             if (!eventDAO.checkDate(newDay, newMonth, newYear)) {
-                                System.out.println("NOT VALID! Please try again...");
+                                System.out.println("-----NOT VALID! Please try again...-----");
                             }
                         }
                         event.setDate(String.format("%d/%d/%d", newDay, newMonth, newYear));
@@ -187,11 +187,11 @@ public class Main {
                     eventDAO.deleteEvent(deleteName);
                     break;
                 case "0":
-                    System.out.println("Exit program.");
+                    System.out.println("-----Exit program-----");
                     scanner.close();
                     return;
                 default:
-                    System.out.println("Invalid selection. Please select again.");
+                    System.out.println("-----Invalid selection. Please select again-----");
             }
         }
     }
@@ -234,11 +234,11 @@ public class Main {
         do {
             System.out.print("Enter event name: ");
             eventName = scanner.nextLine();
-            if (!isValidInput(eventName)||
-                !eventDAO.checkValidOfEvent(eventName)) {
+            if (!isValidInput(eventName)
+                    || !eventDAO.checkValidOfEvent(eventName)) {
                 System.out.println("======INVALID NAME======");
             }
-        } while (!isValidInput(eventName)|| !eventDAO.checkValidOfEvent(eventName));
+        } while (!isValidInput(eventName) || !eventDAO.checkValidOfEvent(eventName));
         event.setEventName(eventName);
         boolean validDate = false;
         while (!validDate) {
@@ -256,7 +256,7 @@ public class Main {
                 }
             } catch (NumberFormatException e) {
 
-                System.out.println("===Please enter valid numbers for day, month, and year!===");
+                System.out.println("-----Please enter valid numbers for day, month, and year!-----");
             }
         }
 
