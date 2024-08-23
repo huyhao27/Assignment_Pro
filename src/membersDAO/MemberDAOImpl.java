@@ -82,10 +82,7 @@ public class MemberDAOImpl implements MemberDAO {
     public List<Member> getAllMembers() {
         return members;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> quynh
     @Override
     public boolean isExist(String checkID, String checkPhone) {
         for (Member member : members) {
