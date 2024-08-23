@@ -83,15 +83,6 @@ public class MemberDAOImpl implements MemberDAO {
         return members;
     }
 
-    /*public boolean isExist(String checkID, String checkPhone) {
-        for (Member member : members) {
-            if (member.getID().equalsIgnoreCase(checkID) 
-                || member.getPhoneNumber().equals(checkPhone)) {
-                return true;
-            }
-        }
-        return false;
-    }*/
     @Override
     public boolean isExist(String checkID, String checkPhone) {
         for (Member member : members) {
